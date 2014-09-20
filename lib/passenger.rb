@@ -13,7 +13,7 @@ class Passenger
 	end
 
 	def get_off(coach)
-		coach.drop_off(self)
+		coach.drop_off(self)		
 	end
 
 end

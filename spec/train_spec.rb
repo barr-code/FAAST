@@ -12,6 +12,11 @@ describe Train do
 		expect(train.capacity).to eq(10)
 	end
 
+	it "should transfer coaches" do
+		train.load(coach)
+		expect(train.coach_count).to eq(1)
+	end
+
 	it "should be able to arrive at station" do
 		train.arrive(station)
 		expect(station.train_count).to eq(1)

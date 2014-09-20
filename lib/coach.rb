@@ -15,7 +15,7 @@ class Coach
 	end
 
 	def drop_off(passenger)
-		@passengers.pop
+		@passengers.delete(passenger)
 	end
 
 	def passenger_count
