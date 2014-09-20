@@ -9,5 +9,11 @@ describe Station do
 		station.accept(train)
 		expect(station).to have_trains
 	end
+
+	it "should be able to admit passengers" do
+		passenger = double :passenger
+		station.admit(passenger)
+		expect(station).to have_passengers
+	end
 	
 end
