@@ -10,7 +10,12 @@ class Coach
 	end
 
 	def pick_up(passenger)
+		raise 'There\'s no more room on this coach.' if full?
 		@passengers << passenger
+	end
+
+	def drop_off(passenger)
+		@passengers.pop
 	end
 
 	def passenger_count

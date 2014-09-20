@@ -19,5 +19,17 @@ describe Coach do
 		40.times {coach.pick_up(passenger)}
 		expect(coach).to be_full 
 	end
+
+	it "should let passengers get off" do
+		coach.pick_up(passenger)
+		expect(coach.passenger_count).to eq(1)
+		coach.drop_off(passenger)
+		expect(coach.passenger_count).to eq(0)
+	end
+
+	it "should not pick up passengers when it's full" do
+		40.times {coach.pick_up(passenger)}
+		expect(lambda {coach.pick_up(passenger)}).to raise_error(RuntimeError)
+	end
 	
 end
