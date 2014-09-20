@@ -12,8 +12,9 @@ class Passenger
 		coach.pick_up(self)
 	end
 
-	def get_off(coach)
-		coach.drop_off(self)		
+	def get_off(coach, station)
+		coach.drop_off(self)
+		enter(station)		
 	end
 
 end
