@@ -10,15 +10,31 @@ class Station
 	end
 
 	def has_passengers?
-		@passengers.count != 0
+		passenger_count != 0
 	end
 
 	def accept(train)
 		@trains << train
 	end
 
-	def admit(passenger)
+	def release(train)
+		@trains.pop
+	end
+
+	def touch_in(passenger)
 		@passengers << passenger
+	end
+
+	def touch_out(passenger)
+		@passengers.pop
+	end
+
+	def passenger_count
+		@passengers.count
+	end
+
+	def train_count
+		@trains.count
 	end
 
 end
