@@ -17,4 +17,18 @@ let(:station) {Station.new}
 		passenger.exit(station)
 		expect(station.passenger_count).to eq(0)
 	end
+	
+	it "should be able to board coach" do
+		coach = double :coach
+		expect(coach).to receive(:pick_up)
+		passenger.board(coach)
+	end
+
+	it "should be able to get off the coach" do
+		coach = double :coach
+		expect(coach).to receive(:drop_off)
+		passenger.get_off(coach)
+	end
+
+
 end

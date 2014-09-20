@@ -37,4 +37,10 @@ describe Station do
 		station.release(train)
 		expect(station.train_count).to eq(0)
 	end
+
+	it "should know how many trains are in the station" do
+		train = double :train
+		3.times {station.accept(train)}
+		expect(station.train_count).to eq(3)
+	end
 end
