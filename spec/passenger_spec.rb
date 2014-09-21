@@ -21,7 +21,15 @@ let(:station) {Station.new}
 	it "should be able to board coach" do
 		coach = double :coach
 		expect(coach).to receive(:pick_up)
-		passenger.board(coach)
+		passenger.enter(station)
+		passenger.board(station, coach)
+	end
+
+	it "should only be able to board coaches when it's at a station" do
+		coach = double :coach
+		allow(coach).to receive(:pick_up)
+		expect(lambda {passenger.board(station, coach)}).to raise_error(RuntimeError)
+
 	end
 
 	it "should be able to get off the coach" do

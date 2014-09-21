@@ -18,7 +18,7 @@ class Station
 	end
 
 	def release(train)
-		@trains.pop
+		@trains.delete(train)
 	end
 
 	def touch_in(passenger)
@@ -26,7 +26,7 @@ class Station
 	end
 
 	def touch_out(passenger)
-		@passengers.pop
+		@passengers.delete(passenger)
 	end
 
 	def passenger_count
