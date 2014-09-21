@@ -29,7 +29,7 @@ let(:coach) {Coach.new}
 		passenger.board(station, coach)
 	end
 
-	it "should only be able to board coaches when it's at a station" do
+	it "should only be able to board coaches when passenger is at a station" do
 		coach = double :coach
 		allow(coach).to receive(:pick_up)
 		expect(lambda {passenger.board(station, coach)}).to raise_error(RuntimeError)
@@ -58,6 +58,17 @@ let(:coach) {Coach.new}
 		passenger = Passenger.new(0)
 		expect(passenger.credit).to eq(0)
 		expect(lambda {passenger.enter(station)}).to raise_error(RuntimeError)
+	end
+
+	it "should be able to top up credit" do 
+		passenger = Passenger.new(0)
+		passenger.top_up(50)
+		expect(passenger.credit).to eq(50)
+	end
+
+	it "should only be able to board a coach if the coach is at the station" do
+		passenger.enter(station)
+		expect(lambda {passenger.board(station, coach)}).to raise_error(RuntimeError)
 	end
 
 end

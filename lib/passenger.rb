@@ -10,6 +10,10 @@ class Passenger
 	def pay_fare
 		@credit = @credit - 2
 	end
+
+	def top_up(value)
+		@credit = @credit + value if (value.is_a? Integer) && value > 0
+	end
 	
 	def enter(station)
 		raise 'You are already in the station.' if @in_station == true
