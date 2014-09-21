@@ -10,7 +10,7 @@ class Coach
 	end
 
 	def pick_up(passenger)
-		raise 'There\'s no more room on this coach.' if full?
+		raise 'There\'s no more room on this coach. Try another coach.' if full?
 		@passengers << passenger
 	end
 

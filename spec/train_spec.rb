@@ -27,5 +27,10 @@ describe Train do
 		train.depart(station)
 		expect(station.train_count).to eq(0)
 	end
+
+	it "should not transfer more coaches that its capacity" do
+		10.times {train.load(coach)}
+		expect(lambda {train.load(coach)}).to raise_error(RuntimeError)
+	end
 	
 end

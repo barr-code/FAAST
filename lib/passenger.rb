@@ -12,7 +12,7 @@ class Passenger
 	end
 	
 	def enter(station)
-		raise 'You do not have enough credit on your card. Please top up your card to ride.' if @credit < 2
+		raise 'You do not have enough credit on your card. Please top up your card to ride.' if credit < 2
 		station.touch_in(self)
 		@in_station = true
 		pay_fare

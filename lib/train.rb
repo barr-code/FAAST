@@ -10,6 +10,7 @@ class Train
 	end
 
 	def load(coach)
+		raise 'Can\'t transfer another coach. Try another train.' if full?
 		@coaches << coach
 	end
 
@@ -23,5 +24,9 @@ class Train
 
 	def depart(station)
 		station.release(self)
+	end
+
+	def full?
+		coach_count == @capacity
 	end
 end
