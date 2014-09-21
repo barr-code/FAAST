@@ -1,10 +1,14 @@
 require 'passenger'
 require 'station'
+require 'train'
+require 'coach'
 
 describe Passenger do 
 
 let(:passenger) {Passenger.new}
 let(:station) {Station.new}
+let(:train) {Train.new}
+let(:coach) {Coach.new}
 
 	it "should be able to enter a station" do
 		passenger.enter(station)
@@ -19,8 +23,8 @@ let(:station) {Station.new}
 	end
 	
 	it "should be able to board coach" do
-		coach = double :coach
-		expect(coach).to receive(:pick_up)
+		train.load(coach)
+		train.travel(nil, station)
 		passenger.enter(station)
 		passenger.board(station, coach)
 	end

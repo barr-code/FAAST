@@ -1,3 +1,5 @@
+require_relative 'train.rb'
+
 class Coach
 
 	def initialize(capacity=40)
@@ -24,6 +26,10 @@ class Coach
 
 	def full?
 		passenger_count == @capacity
+	end
+
+	def at_station?
+
 	end
 
 end
