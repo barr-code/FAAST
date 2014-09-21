@@ -20,7 +20,7 @@ class Train
 		@coaches.count 
 	end
 
-	def transfer(station_from=nil, station_to)
+	def travel(station_from=nil, station_to)
 		station_from.release(self) if station_from != nil
 		station_to.accept(self)
 	end
