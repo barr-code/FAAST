@@ -18,13 +18,13 @@ describe Train do
 	end
 
 	it "should be able to arrive at station" do
-		train.arrive(station)
+		train.transfer(station)
 		expect(station.train_count).to eq(1)
 	end
 
 	it "should move from one station to another" do 
 		station1, station2 = Station.new, Station.new
-		train.arrive(station1)
+		train.transfer(station1)
 		expect(station2.train_count).to eq(0)
 		expect(station1.train_count).to eq(1)
 		train.transfer(station1, station2)

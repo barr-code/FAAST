@@ -20,13 +20,9 @@ class Train
 		@coaches.count 
 	end
 
-	def arrive(station)
-		station.accept(self)
-	end
-
-	def transfer(station_from, station_to)
-		station_from.release(self)
-		arrive(station_to)
+	def transfer(station_from=nil, station_to)
+		station_from.release(self) if station_from != nil
+		station_to.accept(self)
 	end
 
 	def full?
