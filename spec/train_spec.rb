@@ -18,12 +18,14 @@ describe Train do
 	end
 
 	it "should be able to arrive at station" do
+		train.load(coach)
 		train.travel(nil, station)
 		expect(station.train_count).to eq(1)
 	end
 
 	it "should move from one station to another" do 
 		station1, station2 = Station.new, Station.new
+		train.load(coach)
 		train.travel(nil, station1)
 		expect(station2.train_count).to eq(0)
 		expect(station1.train_count).to eq(1)
@@ -35,6 +37,10 @@ describe Train do
 	it "should not transfer more coaches that its capacity" do
 		10.times {train.load(coach)}
 		expect(lambda {train.load(coach)}).to raise_error(RuntimeError)
+	end
+
+	it "should not travel between stations without a coach" do
+		expect(lambda {train.travel(nil, station)}).to raise_error(RuntimeError)
 	end
 	
 end
