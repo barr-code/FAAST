@@ -22,10 +22,14 @@ describe Train do
 		expect(station.train_count).to eq(1)
 	end
 
-	it "should be able to leave the station" do 
-		train.arrive(station)
-		train.depart(station)
-		expect(station.train_count).to eq(0)
+	it "should move from one station to another" do 
+		station1, station2 = Station.new, Station.new
+		train.arrive(station1)
+		expect(station2.train_count).to eq(0)
+		expect(station1.train_count).to eq(1)
+		train.transfer(station1, station2)
+		expect(station1.train_count).to eq(0)
+		expect(station2.train_count).to eq(1)
 	end
 
 	it "should not transfer more coaches that its capacity" do

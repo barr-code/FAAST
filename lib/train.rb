@@ -1,3 +1,5 @@
+require_relative 'coach.rb'
+
 class Train
 
 	def initialize(capacity=10)
@@ -22,11 +24,13 @@ class Train
 		station.accept(self)
 	end
 
-	def depart(station)
-		station.release(self)
+	def transfer(station_from, station_to)
+		station_from.release(self)
+		arrive(station_to)
 	end
 
 	def full?
 		coach_count == @capacity
 	end
+
 end
