@@ -21,7 +21,7 @@ class Train
 	end
 
 	def travel(station_from, station_to)
-		raise 'Don\'t leave the station without your passengers!' if coach_count == 0
+		raise 'Don\'t leave the station without a coach!' if coach_count == 0
 		station_from.release(self) if station_from != nil
 		station_to.accept(self)
 	end
