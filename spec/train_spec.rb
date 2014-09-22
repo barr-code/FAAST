@@ -21,12 +21,13 @@ describe Train do
 		train.travel(nil, station)
 	end
 
-	it "should move from one station to another" do 
-		station1, station2 = Station.new, Station.new
+	it "should leave one station when it moves to another" do 
+		station1 = double :station
+		station2 = double :station
 		train.load(coach)
-		train.travel(nil, station1)
-		expect{train.travel(station1, station2)}.to change{station1.train_count}.by(-1)
-		expect{train.travel(station1, station2)}.to change{station2.train_count}.by(1)
+		allow(station2).to receive(:accept)
+		expect(station1).to receive(:release)
+		train.travel(station1, station2)
 	end
 
 	it "should not transfer more coaches that its capacity" do
