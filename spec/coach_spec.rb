@@ -1,18 +1,16 @@
 require 'coach'
-require 'passenger'
 
 describe Coach do
 
 	let(:coach) {Coach.new}
-	let(:passenger) {Passenger.new}
+	let(:passenger) {double :passenger}
 
 	it "should have a capacity of 40 passengers" do
 		expect(coach.capacity).to eq(40)
 	end
 
 	it "should be able to accept passengers" do
-		coach.pick_up(passenger)
-		expect(coach.passenger_count).to eq(1)
+		expect{coach.pick_up(passenger)}.to change{coach.passenger_count}.by(1)
 	end
 
 	it "should know when it's full" do
@@ -22,9 +20,7 @@ describe Coach do
 
 	it "should let passengers get off" do
 		coach.pick_up(passenger)
-		expect(coach.passenger_count).to eq(1)
-		coach.drop_off(passenger)
-		expect(coach.passenger_count).to eq(0)
+		expect{coach.drop_off(passenger)}.to change{coach.passenger_count}.by -1
 	end
 
 	it "should not pick up passengers when it's full" do
