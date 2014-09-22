@@ -28,8 +28,4 @@ class Coach
 		passenger_count == @capacity
 	end
 
-	def at_station?
-
-	end
-
 end
