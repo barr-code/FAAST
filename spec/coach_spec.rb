@@ -5,6 +5,10 @@ describe Coach do
 	let(:coach) {Coach.new}
 	let(:passenger) {double :passenger}
 
+	def fill_coach(passenger)
+		coach.capacity.times {coach.pick_up(passenger)}
+	end
+
 	it "should have a capacity of 40 passengers" do
 		expect(coach.capacity).to eq(40)
 	end
@@ -14,7 +18,7 @@ describe Coach do
 	end
 
 	it "should know when it's full" do
-		40.times {coach.pick_up(passenger)}
+	    fill_coach(passenger)
 		expect(coach).to be_full 
 	end
 
@@ -24,8 +28,8 @@ describe Coach do
 	end
 
 	it "should not pick up passengers when it's full" do
-		40.times {coach.pick_up(passenger)}
-		expect(lambda {coach.pick_up(passenger)}).to raise_error(RuntimeError)
+		fill_coach(passenger)
+		expect{coach.pick_up(passenger)}.to raise_error "There's no more room on this coach. Try another coach."
 	end
 	
 end
