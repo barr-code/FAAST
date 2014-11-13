@@ -1,40 +1,41 @@
 class Station
 
+	attr_reader :passengers, :trains
+
 	def initialize
-		@trains = []
-		@passengers = []
+		@trains, @passengers = [], []
 	end
 
 	def has_trains?
-		@trains.count != 0
+		trains.any?
 	end
 
 	def has_passengers?
-		passenger_count != 0
+		passengers.any?
 	end
 
 	def accept(train)
-		@trains << train
+		trains << train
 	end
 
 	def release(train)
-		@trains.delete(train)
+		trains.delete(train)
 	end
 
 	def touch_in(passenger)
-		@passengers << passenger
+		passengers << passenger
 	end
 
 	def touch_out(passenger)
-		@passengers.delete(passenger)
+		passengers.delete(passenger)
 	end
 
 	def passenger_count
-		@passengers.count
+		passengers.count
 	end
 
 	def train_count
-		@trains.count
+		trains.count
 	end
 
 end

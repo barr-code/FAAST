@@ -3,6 +3,7 @@ require 'passenger'
 describe Passenger do 
 
 let(:passenger) {Passenger.new}
+let(:poor_passenger) {Passenger.new(0)}
 let(:station) {double :station, :has_trains? => true}
 let(:train) {double :train}
 let(:coach) {double :coach}
@@ -48,14 +49,12 @@ let(:coach) {double :coach}
 	end
 
 	it "should not be able to ride without enough credit" do 
-		passenger = Passenger.new(0)
-		expect(lambda {passenger.enter(station)}).to raise_error(RuntimeError)
+		expect(lambda {poor_passenger.enter(station)}).to raise_error(RuntimeError)
 	end
 
 	it "should be able to top up credit" do 
-		passenger = Passenger.new(0)
 		passenger.top_up(50)
-		expect(passenger.credit).to eq(50)
+		expect(passenger.credit).to eq(70)
 	end
 
 end

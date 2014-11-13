@@ -22,12 +22,11 @@ describe Train do
 	end
 
 	it "should leave one station when it moves to another" do 
-		station1 = double :station
 		station2 = double :station
 		train.load(coach)
 		allow(station2).to receive(:accept)
-		expect(station1).to receive(:release)
-		train.travel(station1, station2)
+		expect(station).to receive(:release)
+		train.travel(station, station2)
 	end
 
 	it "should not transfer more coaches that its capacity" do
@@ -38,5 +37,7 @@ describe Train do
 	it "should not travel between stations without a coach" do
 		expect(lambda {train.travel(nil, station)}).to raise_error(RuntimeError)
 	end
+
+	#add test to see if the train is full
 	
 end

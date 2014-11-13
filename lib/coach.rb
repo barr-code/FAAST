@@ -1,5 +1,3 @@
-require_relative 'train.rb'
-
 class Coach
 
 	def initialize(capacity=40)

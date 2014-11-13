@@ -8,11 +8,11 @@ class Passenger
 	end
 
 	def pay_fare
-		@credit = @credit - 2
+		self.credit -= 2
 	end
 
 	def top_up(value)
-		@credit = @credit + value if (value.is_a? Integer) && value > 0
+		self.credit += value if (value.is_a? Integer) && value > 0
 	end
 	
 	def enter(station)
@@ -36,16 +36,12 @@ class Passenger
 	def board(station, coach)
 		raise 'There is no coach to board.' if station.has_trains? == false
 		raise 'Must be in the station to board a coach.' if @in_station == false
-		exit(station)
 		coach.pick_up(self)
+		exit(station)
 	end
 
 	def get_off(coach, station)
 		coach.drop_off(self)
 		get_off_at(station)		
-	end
-
-	def credit
-		@credit
 	end
 end
