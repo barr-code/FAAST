@@ -26,33 +26,33 @@ Change into the directory.
 ### Play with the code
 ```
 	$ irb
-	$ require './runner.rb'
-	$ liverpool_street = Station.new
-	$ oxford_circus = Station.new
-	$ victoria = Passenger.new
-	$ train = Train.new
-	$ coach = Coach.new
-	$ train.load(coach)
-	$ liverpool_street.accept(train)
+	> require './runner.rb'
+	> liverpool_street = Station.new
+	> oxford_circus = Station.new
+	> victoria = Passenger.new
+	> train = Train.new
+	> coach = Coach.new
+	> train.load(coach)
+	> liverpool_street.accept(train)
 ```
 
 ### Enter the station
 ```
-	$ victoria.enter(liverpool_street)
+	> victoria.enter(liverpool_street)
 ```
 
 ### Get on a train
 ```
-	$ victoria.board(liverpool_street, coach)
+	> victoria.board(liverpool_street, coach)
 ```
 
 ### Disembark at your destination
 ```
-	$ victoria.get_off(coach, oxford_cirucs)
+	> victoria.get_off(coach, oxford_cirucs)
 ```
 
 ### Leave station and go home
 ```
-	$ victoria.exit(oxford_circus)
+	> victoria.exit(oxford_circus)
 ```
 
